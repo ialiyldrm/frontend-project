@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import { BrowserRouter,Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import User from './components/User/User';
@@ -10,8 +10,8 @@ function App() {
       <BrowserRouter>
         <Navbar></Navbar>
         <Routes>
-          <Route  path="/" element={<Home/>}></Route>
-          <Route  path="/users/:userId" element={<User/>}></Route>
+          <Route exact  path="/" element={<Home/>}></Route>
+          <Route exact  path="/users/:userId" element={<User/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
