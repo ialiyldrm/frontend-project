@@ -1,8 +1,5 @@
 import React,{useState, useEffect} from "react";
 import Post from "../Post/Post";
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
 
 function Home(){
     const [error, setError] = useState(null);
@@ -29,17 +26,15 @@ function Home(){
     }else if(!isLoaded){
         return <div> Loading...</div>
     }else{
-        return(
-            <React.Fragment>
-            <CssBaseline />
-            <Container fixed sx={{display:"flex",flexWrap:"wrap",justifyContent:"center",background:"#cfe8fc",height:"200vh"}}>
-                <Box >
+        return( 
+            <div  style={{display:"flex",flexWrap:"wrap",justifyContent:"center",background:"#f0f5ff"}}>
+    
                 {postList.map(post => (
                     <Post userId={post.userId} userName={post.userName} title={post.title}  text ={post.text}></Post>                       
                 ))}
-                </Box>
-            </Container>
-          </React.Fragment>
+              
+            </div>
+
         );
     }
 }
