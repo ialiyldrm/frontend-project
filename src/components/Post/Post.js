@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import {Link} from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -24,19 +25,27 @@ const ExpandMore = styled((props) => {
 
 function Post(props){
     const [expanded, setExpanded] = React.useState(false);
-  
+    const {title,text,userName,userId} = props;
+    const [like,setLike] = useState(false);
     const handleExpandClick = () => {
       setExpanded(!expanded);
     };
-    const {title,text} = props;
+
+    const handleLike = () => {
+        setLike(!like);
+    };
+
+   
     return(
         <div className="postContainer" >
-                <Card sx={{ width: 800,margin : 20, textAlign : "left" }}>
+                <Card sx={{width: 800,margin : 5, textAlign : "left" }}>
                     <CardHeader
                         avatar={
+                        <Link  style={{ textDecoration: 'none', color: 'white',boxShadow : "none" }} to={{pathname : '/users/' + userId}} >
                         <Avatar sx={{  background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)' }} aria-label="recipe">
-                            R
+                            {userName.charAt(0).toUpperCase()}
                         </Avatar>
+                        </Link>
                         }
                         title={title}  
                     />
@@ -47,8 +56,10 @@ function Post(props){
                         </Typography>
                     </CardContent>
                     <CardActions disableSpacing>
-                        <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
+                        <IconButton 
+                        onClick = {handleLike}
+                        aria-label="add to favorites">
+                        <FavoriteIcon style={like? {color:"red"}: null } />
                         </IconButton>
                         <ExpandMore
                         expand={expanded}

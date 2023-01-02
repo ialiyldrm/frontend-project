@@ -32,10 +32,10 @@ function Home(){
         return(
             <React.Fragment>
             <CssBaseline />
-            <Container fixed sx={{display:"flex",flexWrap:"wrap",justifyContent:"center",alignItems:"center",background:"#cfe8fc",height:"200vh"}}>
+            <Container fixed sx={{display:"flex",flexWrap:"wrap",justifyContent:"center",background:"#cfe8fc",height:"200vh"}}>
                 <Box >
                 {postList.map(post => (
-                    <Post title={post.title}  text ={post.text}></Post>                       
+                    <Post userId={post.userId} userName={post.userName} title={post.title}  text ={post.text}></Post>                       
                 ))}
                 </Box>
             </Container>

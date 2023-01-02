@@ -26,11 +26,11 @@ function Navbar(){
                         <MenuIcon />
                     </IconButton>
                     <Typography  variant="h6" component="div" sx={{ flexGrow: 1 , textAlign:"left"}} >
-                        <Link  to='/'>Home</Link>
+                        <Link   style={{ textDecoration: 'none', color: 'white',boxShadow : "none" }}  to='/'>Home</Link>
                     </Typography>
                     <Button color="inherit">Login</Button>
                     <Typography variant="h6" component="div" sx={{textAlign: "right"}} >
-                    <Link  to={{pathname : '/users/' + userId}} >User</Link>
+                    <Link  style={{ textDecoration: 'none', color: 'white',boxShadow : "none" }} to={{pathname : '/users/' + userId}} >User</Link>
                     </Typography>
                     </Toolbar>
                 </AppBar>
