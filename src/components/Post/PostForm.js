@@ -5,15 +5,16 @@ import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import { Button, InputAdornment, OutlinedInput } from "@mui/material";
+import { Alert, Button, InputAdornment, OutlinedInput, Snackbar } from "@mui/material";
 
 
 
 function PostForm(props){
 
-    const {userName,userId} = props;
+    const {userName,userId,refreshPosts} = props;
     const [text,setText] = useState("");
     const [title,setTitle] = useState("");
+    const [isSent, setIsSent] = useState(false);
     
 
    const savePost = () => {
@@ -35,21 +36,41 @@ function PostForm(props){
  
     const handleTitle= (value) => {
        setTitle(value);
+       setIsSent(false);
       
     };
 
     const handleText = (value) => {
        setText(value);
+       setIsSent(false);
       
     };
 
     const handleSubmit = () => {
        savePost();
+       setIsSent(true);
+       setTitle("");
+       setText("");
+       refreshPosts();
     };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setIsSent(false);
+      };
 
    
     return(
         <div className="postContainer" >
+                <Snackbar open={isSent} autoHideDuration={1200} onClose={handleClose}>
+                    <Alert  onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Your post is sent!
+                    </Alert>
+                </Snackbar>
+
                 <Card sx={{width: 800,margin : 5, textAlign : "left" }}>
                     <CardHeader
                         avatar={
