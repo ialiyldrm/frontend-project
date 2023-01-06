@@ -32,11 +32,11 @@ function Home(){
     }else{
         return( 
             <div  style={{display:"flex",flexWrap:"wrap",justifyContent:"center",background:"#f0f5ff"}}>
-                <PostForm userId={1} userName={"ddddd"} refreshPosts= {refreshPosts} />
-                {postList.map(post => (
-                    <Post userId={post.userId} userName={post.userName} 
-                    title={post.title}  text ={post.text} ></Post>                       
-                ))}
+                <PostForm userId={1} userName={"User"} refreshPosts= {refreshPosts} />
+                    {postList.map(post => (
+                        <Post likes = {post.postLikes} postId = {post.id} userId = {post.userId} userName = {post.userName}  
+                        title={post.title} text={post.text}></Post>
+                    ))}
               
             </div>
 
